@@ -1,4 +1,4 @@
-# Condition Variable Inter-Thread Communication Example
+# Inter Process Messenger
 
 ## Description
 This project demonstrates inter-thread communication using `std::condition_variable` in modern C++ with a focus on clean code and solid architecture. The application consists of two threads: an initiator thread that sends data to a receiver thread, and a receiver thread that processes the data received from the initiator.
