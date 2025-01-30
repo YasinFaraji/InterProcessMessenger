@@ -10,8 +10,6 @@
 #include <spdlog/sinks/basic_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
-constexpr int MAX_COUNT = 10;
-
 class Logger
 {
   public:
