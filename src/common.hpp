@@ -1,10 +1,10 @@
 #ifndef COMMON_HPP
 #define COMMON_HPP
 
-#include <string>
 #include <chrono>
-#include <iomanip>
+#include <string>
 #include <sstream>
+#include <iomanip>
 
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/basic_file_sink.h>
