@@ -3,7 +3,7 @@
 ## Description
 This project demonstrates inter-process communication (IPC) using shared memory and mutex synchronization in modern C++ on Linux.
 
-- `Initiator`: Starts the process, writes an initial integer value (1) to shared memory, and continuously increments it by 2.
+- `Initiator`: Starts the process, writes an initial integer value (1) to shared memory, and continuously increments it by 1.
 - `Receiver`: Reads the value from shared memory, increments it by 1, and sends it back to the initiator.
 
 The process continues until the value reaches 10, after which both processes terminate.
