@@ -35,6 +35,32 @@ void SharedMemory::receiveSharedMemory()
     }
 }
 
+void SharedMemory::initiateSharedMemory()
+{
+    const char* shm_name = "/shared_counter";
+
+    shm_fd = shm_open(shm_name, O_CREAT | O_RDWR, 0666);
+    if (shm_fd == -1)
+    {
+        throw std::runtime_error("Failed to create shared memory");
+    }
+
+    if (ftruncate(shm_fd, sizeof(int)) == -1)
+    {
+        close(shm_fd);
+        throw std::runtime_error("Failed to set shared memory size");
+    }
+
+    data = static_cast<int*>(mmap(0, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0));
+    if (data == MAP_FAILED)
+    {
+        close(shm_fd);
+        throw std::runtime_error("Failed to map shared memory");
+    }
+
+    *data = 0;
+}
+
 void SharedMemory::write(int value)
 {
     *data = value;
