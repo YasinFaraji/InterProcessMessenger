@@ -6,6 +6,15 @@
 #include <unistd.h>
 #include <sys/mman.h>
 
+namespace IPC
+{
+enum class Mode
+{
+    Initiator,
+    Receiver
+};
+}
+
 class SharedMemory
 {
   private:
