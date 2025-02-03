@@ -21,6 +21,8 @@ class SharedMemory
     int shm_fd;
     int* data;
 
+    void receiveSharedMemory();
+
   public:
     SharedMemory();
     ~SharedMemory();
