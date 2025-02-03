@@ -17,6 +17,24 @@ SharedMemory::~SharedMemory()
     shm_unlink("/shared_counter");
 }
 
+void SharedMemory::receiveSharedMemory()
+{
+    const char* shm_name = "/shared_counter";
+
+    shm_fd = shm_open(shm_name, O_RDWR, 0666);
+    if (shm_fd == -1)
+    {
+        throw std::runtime_error("Failed to open shared memory");
+    }
+
+    data = static_cast<int*>(mmap(0, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0));
+    if (data == MAP_FAILED)
+    {
+        close(shm_fd);
+        throw std::runtime_error("Failed to map shared memory");
+    }
+}
+
 void SharedMemory::write(int value)
 {
     *data = value;
