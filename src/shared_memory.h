@@ -25,7 +25,7 @@ class SharedMemory
     void initiateSharedMemory();
 
   public:
-    SharedMemory();
+    SharedMemory(IPC::Mode mode);
     ~SharedMemory();
     void write(int value);
     int read();
