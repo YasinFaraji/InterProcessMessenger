@@ -22,6 +22,7 @@ class SharedMemory
     int* data;
 
     void receiveSharedMemory();
+    void initiateSharedMemory();
 
   public:
     SharedMemory();
