@@ -2,12 +2,20 @@
 
 #include "common.hpp"
 
-SharedMemory::SharedMemory()
+SharedMemory::SharedMemory(IPC::Mode mode)
 {
-    shm_fd = shm_open("/shared_counter", O_CREAT | O_RDWR, 0666);
-    ftruncate(shm_fd, sizeof(int));
-    data = static_cast<int*>(mmap(0, sizeof(int), PROT_READ | PROT_WRITE, MAP_SHARED, shm_fd, 0));
-    *data = 0;
+    if (mode == IPC::Mode::Initiator)
+    {
+        initiateSharedMemory();
+    }
+    else if (mode == IPC::Mode::Receiver)
+    {
+        receiveSharedMemory();
+    }
+    else
+    {
+        throw std::invalid_argument("Invalid mode");
+    }
 }
 
 SharedMemory::~SharedMemory()
