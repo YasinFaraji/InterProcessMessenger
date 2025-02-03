@@ -11,7 +11,7 @@ namespace IPC
 void runInitiator()
 {
     log("Initiator started");
-    SharedMemory shm;
+    SharedMemory shm(IPC::Mode::Initiator);
     Synchronization sync;
 
     shm.write(1);
