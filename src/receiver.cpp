@@ -11,7 +11,7 @@ namespace IPC
 void runReceiver()
 {
     log("Receiver started");
-    SharedMemory shm;
+    SharedMemory shm(IPC::Mode::Receiver);
     Synchronization sync;
 
     while (true)
